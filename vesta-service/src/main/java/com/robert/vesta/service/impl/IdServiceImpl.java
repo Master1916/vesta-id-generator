@@ -35,7 +35,7 @@ public class IdServiceImpl extends AbstractIdServiceImpl {
     }
 
     public void initPopulator() {
-        if(idPopulator != null){
+        if (idPopulator != null) {
             log.info("The " + idPopulator.getClass().getCanonicalName() + " is used.");
         } else if (CommonUtils.isPropKeyOn(SYNC_LOCK_IMPL_KEY)) {
             log.info("The SyncIdPopulator is used.");
@@ -49,6 +49,7 @@ public class IdServiceImpl extends AbstractIdServiceImpl {
         }
     }
 
+    @Override
     protected void populateId(Id id) {
         idPopulator.populateId(id, this.idMeta);
     }

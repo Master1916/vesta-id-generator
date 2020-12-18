@@ -52,13 +52,13 @@ public abstract class AbstractIdServiceImpl implements IdService {
                     "The machine ID is not configured properly so that Vesta Service refuses to start.");
 
         }
-        if(this.idMeta == null){
+        if (this.idMeta == null) {
             setIdMeta(IdMetaFactory.getIdMeta(idType));
             setType(idType.value());
         } else {
-            if(this.idMeta.getTimeBits() == 30){
+            if (this.idMeta.getTimeBits() == 30) {
                 setType(0);
-            } else if(this.idMeta.getTimeBits() == 40){
+            } else if (this.idMeta.getTimeBits() == 40) {
                 setType(1);
             } else {
                 throw new RuntimeException("Init Error. The time bits in IdMeta should be set to 30 or 40!");
@@ -70,19 +70,19 @@ public abstract class AbstractIdServiceImpl implements IdService {
     public long genId() {
         Id id = new Id();
 
-        id.setMachine(machineId);
-        id.setGenMethod(genMethod);
-        id.setType(type);
-        id.setVersion(version);
+        id.setMachine(machineId);//机器id
+        id.setGenMethod(genMethod);//生产方式
+        id.setType(type);//类型
+        id.setVersion(version);//版本
 
         populateId(id);
 
         long ret = idConverter.convert(id);
 
         // Use trace because it cause low performance
-        if (log.isTraceEnabled())
+        if (log.isTraceEnabled()) {
             log.trace(String.format("Id: %s => %d", id, ret));
-
+        }
         return ret;
     }
 

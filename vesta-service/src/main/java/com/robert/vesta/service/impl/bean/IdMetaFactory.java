@@ -14,4 +14,33 @@ public class IdMetaFactory {
         }
         return null;
     }
+
+
+
+    private static String toBinary(int num){
+        String result="";
+        int i=0;
+        int v;
+        while ((v=(1<<i++))<num){
+            if ((num&v)==0){
+                result=0+result;
+            }else{
+                result=1+result;
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        IdMeta idMeta=IdMetaFactory.maxPeak;
+        System.out.println("MachineBits:"+toBinary((int)idMeta.getMachineBitsMask()));
+        System.out.println("SeqBits"+toBinary((int)idMeta.getSeqBitsMask()));
+        System.out.println("TimeBits"+toBinary((int)idMeta.getTimeBitsMask()));
+        System.out.println("MethodBits"+toBinary((int)idMeta.getGenMethodBitsMask()));
+        System.out.println("TypeBits"+toBinary((int)idMeta.getTypeBitsMask()));
+        System.out.println("VersionBits"+toBinary((int)idMeta.getVersionBitsMask()));
+        System.out.println(" -1L"+toBinary((int)(-1L<<1)));
+
+
+    }
 }

@@ -4,6 +4,8 @@ import com.robert.vesta.service.impl.bean.IdType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Date;
+
 public class TimeUtils {
     protected static final Logger log = LoggerFactory.getLogger(TimeUtils.class);
 
@@ -43,12 +45,17 @@ public class TimeUtils {
     }
 
     public static long genTime(final IdType idType) {
-        if (idType == IdType.MAX_PEAK)
+        if (idType == IdType.MAX_PEAK) {
             return (System.currentTimeMillis() - TimeUtils.EPOCH) / 1000;
-        else if (idType == IdType.MIN_GRANULARITY)
+        } else if (idType == IdType.MIN_GRANULARITY) {
             return (System.currentTimeMillis() - TimeUtils.EPOCH);
-
+        }
         return (System.currentTimeMillis() - TimeUtils.EPOCH) / 1000;
     }
 
+    public static void main(String[] args) {
+        System.out.println((System.currentTimeMillis() - TimeUtils.EPOCH));
+        System.out.println(new Date(1420041600000L));
+        System.out.println(1212<<40);
+    }
 }

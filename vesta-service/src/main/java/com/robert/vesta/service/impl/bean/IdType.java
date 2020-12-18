@@ -26,19 +26,23 @@ public enum IdType {
     }
 
     public static IdType parse(String name) {
-        if ("min-granularity".equals(name))
+        if ("min-granularity".equals(name)) {
             return MIN_GRANULARITY;
-        else if ("max-peak".equals(name))
+        } else if ("max-peak".equals(name)) {
             return MAX_PEAK;
+        }
+
 
         return null;
     }
 
     public static IdType parse(long type) {
-        if (type == 1)
+        if (type == 1) {
             return MIN_GRANULARITY;
-        else if (type == 0)
+        } else if (type == 0) {
             return MAX_PEAK;
+        }
+
 
         return null;
     }

@@ -72,12 +72,18 @@ public class IdServiceFactoryBean implements FactoryBean<IdService> {
 
         IdServiceImpl idServiceImpl = new IdServiceImpl();
         idServiceImpl.setMachineIdProvider(propertyMachineIdProvider);
-        if (genMethod != -1)
+        if (genMethod != -1) {
             idServiceImpl.setGenMethod(genMethod);
-        if (type != -1)
+        }
+
+        if (type != -1) {
             idServiceImpl.setType(type);
-        if (version != -1)
+        }
+
+        if (version != -1) {
             idServiceImpl.setVersion(version);
+        }
+
         idServiceImpl.init();
 
         return idServiceImpl;

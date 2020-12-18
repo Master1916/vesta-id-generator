@@ -48,8 +48,9 @@ public class IdConverterImpl implements IdConverter {
 
     protected Id doConvert(long id, IdMeta idMeta) {
         Id ret = new Id();
-
+        Long l= idMeta.getMachineBitsMask();
         ret.setMachine(id & idMeta.getMachineBitsMask());
+
 
         ret.setSeq((id >>> idMeta.getSeqBitsStartPos()) & idMeta.getSeqBitsMask());
 
